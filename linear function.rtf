@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #!/usr/bin/python3\
+# -*- coding: utf-8 -*-\
+import numpy as np\
+\
+print("This program solves a system of linear equations\\n"\
+      "with n equations and n unknowns (n <= 12)\\n"\
+      "The equations are of the form:\\n"\
+      "A1.X1 + B1.X2 + C1.X3 + etc = P1\\n"\
+      "A2.X1 + B2.X2 + C2.X3 + etc = P2\\n"\
+      "etc\\n"\
+      "An.X1 + Bn.X2 + Cn.X3 + etc = Pn\\n"\
+      "Press ENTER after each input.\\n"\
+      "###############################################################\\n")\
+\
+# Choose the number of equations (less than or equal to 12)\
+ordre = int(input("Number of equations in the system: "))\
+\
+# Enter coefficients of the left-hand side (matrix A)\
+a = []\
+print("Enter the coefficients of each row in the matrix of the left-hand side.")\
+for i in range(ordre):\
+    li = [float(input(f"Coefficient \{chr(65 + j)\}\{i + 1\} = ")) for j in range(ordre)]\
+    a.append(li)\
+\
+# Enter coefficients of the right-hand side (vector b)\
+b = [float(input(f"Coefficient P\{i + 1\} = ")) for i in range(ordre)]\
+\
+# Solve the linear system\
+x = np.linalg.solve(a, b)\
+\
+# Display the solution of the linear system\
+print("\\nSOLUTION OF THE LINEAR SYSTEM:")\
+for i, sol in enumerate(x):\
+    print(f"X\{i + 1\} = \{sol:+11.6f\}")\
+}
